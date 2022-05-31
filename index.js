@@ -49,7 +49,6 @@ app.post("/", upload.single("product_file"), async function (req, res) {
             .get(url)
             .then((response) => {
               row.getCell(2).value = response.data.data.price;
-              console.log("Row Updated");
             })
             .catch((error) => {
               console.log("error");
