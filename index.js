@@ -13,14 +13,15 @@ const upload = multer({ dest: "./Product_file" });
 
 app.post("/", upload.single("product_file"), async function (req, res) {
   try {
-    let file_extenstion = req.file.originalname.split(".")[1];
+    let file_format = req.file.originalname.split(".")[1];
 
     // If the file is not excel sheet then return 409 error.
     if (
-      file_extenstion != "xlsx" &&
-      file_extenstion != "xls" &&
-      file_extenstion != "xlsm" &&
-      file_extenstion != "xlt"
+      file_format != "xlsx" &&
+      file_format != "xls" &&
+      file_format != "xlsm" &&
+      file_format != "xlt" &&
+      file_format != "xl"
     ) {
       fs.unlinkSync(`./Product_file/${req.file.filename}`);
 
